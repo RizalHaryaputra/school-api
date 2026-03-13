@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Siswa;
 use App\Http\Requests\Siswa\SiswaStoreRequest;
 use App\Http\Requests\Siswa\SiswaUpdateRequest;
+use App\Http\Resources\SiswaCollection;
 use App\Http\Resources\SiswaResource;
 
 class SiswaController extends Controller
@@ -14,7 +15,7 @@ class SiswaController extends Controller
     {
         // Eager load tabel kelas agar performa kencang
         $siswa = Siswa::with('kelas')->paginate(10);
-        return SiswaResource::collection($siswa);
+        return new SiswaCollection($siswa);
     }
 
     public function store(SiswaStoreRequest $request)
