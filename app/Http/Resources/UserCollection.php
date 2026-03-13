@@ -15,21 +15,18 @@ class UserCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            // 1. href: Tautan permanen ke koleksi itu sendiri
             'href' => route('users.index'),
 
-            // 2. items: Array dari anggota koleksi (akan otomatis di-format oleh UserResource)
             'items' => $this->collection,
 
-            // 3. links: Tautan ke resource lain yang terkait
             'links' => [
                 [
                     'rel' => 'self',
                     'href' => route('users.index')
-                ]
+                ],
+                
             ],
 
-            // 4. queries: Kontrol Hypermedia untuk mencari isi koleksi (Search Templates)
             'queries' => [
                 [
                     'rel'    => 'search',
@@ -42,7 +39,6 @@ class UserCollection extends ResourceCollection
                 ]
             ],
 
-            // 5. template: Kontrol Hypermedia berupa template kosong untuk menambahkan item baru (Write Templates)
             'template' => [
                 'data' => [
                     ['name' => 'username', 'value' => '', 'prompt' => 'Username (Wajib unik)'],
