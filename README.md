@@ -113,7 +113,7 @@ Sebelum menjalankan proyek ini pastikan sistem sudah memiliki:
 ### 1. Clone Repository
 
 ```bash
-git clone <url-repository>
+git clone https://github.com/RizalHaryaputra/school-api
 cd school-api
 ```
 
@@ -255,7 +255,6 @@ Contoh respons:
 # 👨‍💻 Pengembang
 
 **Rizal Haryaputra**
-Mahasiswa IT dan pengembang web yang berfokus pada backend development, API design, dan sistem informasi berbasis Laravel.
 
 ---
 
