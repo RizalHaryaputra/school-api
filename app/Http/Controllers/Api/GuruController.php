@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use App\Http\Requests\Guru\GuruStoreRequest;
 use App\Http\Requests\Guru\GuruUpdateRequest;
+use App\Http\Resources\GuruCollection;
 use App\Http\Resources\GuruResource;
 
 class GuruController extends Controller
 {
     public function index()
     {
-        // Eager loading 'user' agar tidak terjadi N+1 query
         $guru = Guru::with('user')->paginate(10);
-        return GuruResource::collection($guru);
+        return new GuruCollection($guru);
     }
 
     public function store(GuruStoreRequest $request)
