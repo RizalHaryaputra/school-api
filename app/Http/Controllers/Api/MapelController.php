@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mapel;
 use App\Http\Requests\Mapel\MapelStoreRequest;
 use App\Http\Requests\Mapel\MapelUpdateRequest;
+use App\Http\Resources\MapelCollection;
 use App\Http\Resources\MapelResource;
 
 class MapelController extends Controller
@@ -13,7 +14,7 @@ class MapelController extends Controller
     public function index()
     {
         $mapel = Mapel::paginate(10);
-        return MapelResource::collection($mapel);
+        return new MapelCollection($mapel);
     }
 
     public function store(MapelStoreRequest $request)
