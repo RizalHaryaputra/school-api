@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Jadwal;
 use App\Http\Requests\Jadwal\JadwalStoreRequest;
 use App\Http\Requests\Jadwal\JadwalUpdateRequest;
+use App\Http\Resources\JadwalCollection;
 use App\Http\Resources\JadwalResource;
 
 class JadwalController extends Controller
@@ -13,7 +14,7 @@ class JadwalController extends Controller
     public function index()
     {
         $jadwal = Jadwal::with(['guru', 'mapel', 'kelas'])->paginate(10);
-        return JadwalResource::collection($jadwal);
+        return new JadwalCollection($jadwal);
     }
 
     public function store(JadwalStoreRequest $request)
