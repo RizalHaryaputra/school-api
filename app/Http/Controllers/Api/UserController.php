@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return UserResource::collection($users);
+        return new UserCollection($users);
     }
 
     public function store(UserStoreRequest $request)

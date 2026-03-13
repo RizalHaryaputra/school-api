@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Kelas\KelasStoreRequest;
 use App\Http\Requests\Kelas\KelasUpdateRequest;
+use App\Http\Resources\KelasCollection;
 use App\Http\Resources\KelasResource;
 use App\Models\Kelas;
 
@@ -13,7 +14,7 @@ class KelasController extends Controller
     public function index()
     {
         $kelas = Kelas::paginate(10);
-        return KelasResource::collection($kelas);
+        return new KelasCollection($kelas);
     }
 
     public function store(KelasStoreRequest $request)
