@@ -8,13 +8,13 @@ Dengan pendekatan ini, API bersifat **self-descriptive** sehingga client seperti
 
 # 🚀 Fitur Utama
 
-### 🔐 Otentikasi Aman
+### 🔐 Otentikasi Aman (Stateless)
 
-Menggunakan **Laravel Sanctum** untuk sistem autentikasi berbasis token.
+Menggunakan **JSON Web Token (JWT)** (via `tymon/jwt-auth`) untuk sistem autentikasi *stateless* berkinerja tinggi, menggantikan sistem otentikasi *stateful* tradisional.
 
 ### 👥 Role Based Access Control (RBAC)
 
-Mendukung otorisasi berbasis peran dengan middleware khusus:
+Mendukung otorisasi berbasis peran dengan kombinasi middleware JWT dan peran khusus:
 
 * Admin
 * Guru
