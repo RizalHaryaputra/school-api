@@ -40,8 +40,22 @@ class KelasCollection extends ResourceCollection
 
             'template' => [
                 'data' => [
-                    ['name' => 'kode_kelas', 'value' => '', 'prompt' => 'Kode Kelas (Unik, misal: X-IPA-1)'],
-                    ['name' => 'nama_kelas', 'value' => '', 'prompt' => 'Nama Kelas (misal: Kelas X IPA 1)']
+                    [
+                        'name' => 'kode_kelas',
+                        'value' => '',
+                        'prompt' => 'Kode Kelas (Unik, misal: X-IPA-1)',
+                        'type' => 'text',
+                        'required' => true,
+                        'maxlength' => 10
+                    ],
+                    [
+                        'name' => 'nama_kelas',
+                        'value' => '',
+                        'prompt' => 'Nama Kelas (misal: Kelas X IPA 1)',
+                        'type' => 'text',
+                        'required' => true,
+                        'maxlength' => 50
+                    ],
                 ]
             ]
         ];
