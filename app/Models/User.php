@@ -40,7 +40,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTIdentifier()
     {
-        return $this->getKey(); // Mengambil Primary Key (ID User) untuk Payload
+        return $this->getKey();
     }
 
     /**
@@ -50,6 +50,6 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims()
     {
-        return []; // Biarkan kosong jika tidak ada data tambahan spesifik yang ingin dimasukkan ke token
+        return [];
     }
 }

@@ -7,13 +7,29 @@ use App\Http\Requests\Kelas\KelasStoreRequest;
 use App\Http\Requests\Kelas\KelasUpdateRequest;
 use App\Http\Resources\KelasCollection;
 use App\Http\Resources\KelasResource;
+use Illuminate\Http\Request;
 use App\Models\Kelas;
 
 class KelasController extends Controller
 {
-    public function index()
+    // Tambahkan dependency injection Request $request
+    public function index(Request $request)
     {
-        $kelas = Kelas::paginate(10);
+        $query = Kelas::query();
+
+        // Logika Pencarian: Cek apakah ada parameter 'search' yang dikirim
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            // Mencari di kode_kelas ATAU nama_kelas
+            $query->where('kode_kelas', 'like', "%{$search}%")
+                ->orWhere('nama_kelas', 'like', "%{$search}%");
+        }
+
+        $kelas = $query->paginate(10);
+
+        // Mempertahankan query pencarian pada link paginasi bawaan Laravel
+        $kelas->appends(['search' => $request->search]);
+
         return new KelasCollection($kelas);
     }
 
