@@ -12,7 +12,8 @@ class Jadwal extends Model
         'mapel_id',
         'guru_id',
         'hari',
-        'jam_pelajaran'
+        'jam_mulai',
+        'jam_selesai',
     ];
 
     public function kelas()

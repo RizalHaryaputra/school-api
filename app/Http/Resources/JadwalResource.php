@@ -10,19 +10,18 @@ class JadwalResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'          => $this->id,
-            'hari'        => $this->hari,
-            'jam_pelajaran'   => $this->jam_pelajaran,
-            'guru'        => $this->whenLoaded('guru', function () {
-                return $this->guru->nama;
-            }),
-            'mapel'       => $this->whenLoaded('mapel', function () {
-                return $this->mapel->nama_mapel;
-            }),
-            'kelas'       => $this->whenLoaded('kelas', function () {
-                return $this->kelas->nama_kelas;
-            }),
-            '_links'      => [
+            'id'            => $this->id,
+            'hari'          => $this->hari,
+            'jam_mulai'     => $this->jam_mulai,  
+            'jam_selesai'   => $this->jam_selesai,
+            'guru'          => $this->guru->nama ?? null,
+            'mapel'         => $this->mapel->nama_mapel ?? null,
+            'kelas'         => $this->kelas->nama_kelas ?? null,
+            'guru_id'       => $this->guru_id,
+            'mapel_id'      => $this->mapel_id,
+            'kelas_id'      => $this->kelas_id,
+
+            '_links'        => [
                 [
                     'rel'    => 'self',
                     'method' => 'GET',

@@ -26,7 +26,8 @@ class JadwalStoreRequest extends FormRequest
             'mapel_id'      => 'required|exists:mapel,id',
             'kelas_id'      => 'required|exists:kelas,id',
             'hari'          => 'required|string|in:senin,selasa,rabu,kamis,jumat,sabtu',
-            'jam_pelajaran' => 'required|string',
+            'jam_mulai'     => 'required|date_format:H:i',
+            'jam_selesai'   => 'required|date_format:H:i|after:jam_mulai',
         ];
     }
 }

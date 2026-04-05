@@ -30,10 +30,11 @@ class JadwalCollection extends ResourceCollection
                 [
                     'rel'    => 'search',
                     'href'   => route('jadwal.index'),
-                    'prompt' => 'Cari Jadwal berdasarkan Hari atau ID Kelas',
+                    'prompt' => 'Cari Jadwal berdasarkan Nama Guru, Nama Mapel, atau Nama Kelas',
                     'data'   => [
-                        ['name' => 'hari', 'value' => ''],
-                        ['name' => 'kelas_id', 'value' => '']
+                        ['name' => 'mapel', 'value' => ''],
+                        ['name' => 'guru', 'value' => ''],
+                        ['name' => 'kelas', 'value' => '']
                     ]
                 ]
             ],
@@ -44,7 +45,8 @@ class JadwalCollection extends ResourceCollection
                     ['name' => 'mapel_id', 'value' => '', 'prompt' => 'ID Mata Pelajaran (Wajib)'],
                     ['name' => 'kelas_id', 'value' => '', 'prompt' => 'ID Kelas (Wajib)'],
                     ['name' => 'hari', 'value' => '', 'prompt' => 'Hari (senin, selasa, rabu, kamis, jumat, sabtu)'],
-                    ['name' => 'jam_pelajaran', 'value' => '', 'prompt' => 'Jam Pelajaran (07:00 - 08:00)'],
+                    ['name' => 'jam_mulai', 'value' => '', 'prompt' => 'Jam Mulai (07:00)'],
+                    ['name' => 'jam_selesai', 'value' => '', 'prompt' => 'Jam Selesai (08:00)'],
                 ]
             ]
         ];
