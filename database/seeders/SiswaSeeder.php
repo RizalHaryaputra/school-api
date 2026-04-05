@@ -12,7 +12,7 @@ class SiswaSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Model\Siswa::create([
+        \App\Models\Siswa::create([
             'nis' => '1234567890',
             'gender' => 'laki-laki',
             'nama' => 'Rizal Fadillah',

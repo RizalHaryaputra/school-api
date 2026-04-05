@@ -40,8 +40,22 @@ class MapelCollection extends ResourceCollection
 
             'template' => [
                 'data' => [
-                    ['name' => 'kode_mapel', 'value' => '', 'prompt' => 'Kode Mapel (Unik, misal: MTK01)'],
-                    ['name' => 'nama_mapel', 'value' => '', 'prompt' => 'Nama Mata Pelajaran (misal: Matematika Lanjut)']
+                    [
+                        'name' => 'kode_mapel',
+                        'value' => '',
+                        'prompt' => 'Kode Mapel (Unik, misal: MTK01)',
+                        'type' => 'text',
+                        'required' => true,
+                        'maxlength' => 10
+                    ],
+                    [
+                        'name' => 'nama_mapel',
+                        'value' => '',
+                        'prompt' => 'Mata Pelajaran (misal: Matematika)',
+                        'type' => 'text',
+                        'required' => true,
+                        'maxlength' => 50
+                    ],
                 ]
             ]
         ];

@@ -58,4 +58,17 @@ class UserController extends Controller
         $user->delete();
         return response()->json(['message' => 'User berhasil dihapus'], 200);
     }
+
+    public function getAvailableForGuru()
+    {
+        $users = User::doesntHave('guru')
+            ->select('id', 'username')
+            ->where('type', 'guru')
+            ->orderBy('username', 'asc')
+            ->get();
+
+        return response()->json([
+            'items' => $users
+        ], 200);
+    }
 }

@@ -52,4 +52,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function guru()
+    {
+        return $this->hasOne(Guru::class, 'user_id', 'id');
+    }
 }

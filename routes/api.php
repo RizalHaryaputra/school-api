@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\AuthController;
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Safe Methods (GET) - Bisa diakses tanpa token (Publik)
+Route::get('/users/available-for-guru', [UserController::class, 'getAvailableForGuru']);
 Route::apiResource('users', UserController::class)->only(['index', 'show']);
 Route::apiResource('/kelas', KelasController::class)->only(['index', 'show']);
 Route::apiResource('/mapel', MapelController::class)->only(['index', 'show']);

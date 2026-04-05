@@ -12,7 +12,7 @@ class JadwalSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Model\Jadwal::create([
+        \App\Models\Jadwal::create([
             'kelas_id' => 1,
             'mapel_id' => 1,
             'guru_id' => 1,
@@ -20,7 +20,7 @@ class JadwalSeeder extends Seeder
             'jam_pelajaran' => '07:00:00',
         ]);
 
-        \App\Models\Model\Jadwal::create([
+        \App\Models\Jadwal::create([
             'kelas_id' => 1,
             'mapel_id' => 2,
             'guru_id' => 1,
