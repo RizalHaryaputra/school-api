@@ -13,8 +13,17 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        // Eager load tabel kelas agar performa kencang
-        $siswa = Siswa::with('kelas')->paginate(10);
+        // Cari berdasarkan nama atau nis
+        $query = Siswa::query();
+        if (request()->has('search') && request()->search != '') {
+            $search = request()->search;
+            $query->where('nama', 'like', "%{$search}%")
+                ->orWhere('nis', 'like', "%{$search}%");
+        }
+
+        $siswa = $query->with('kelas')->paginate(10);
+        $siswa->appends(['search' => request()->search]);
+
         return new SiswaCollection($siswa);
     }
 
