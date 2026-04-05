@@ -13,7 +13,16 @@ class MapelController extends Controller
 {
     public function index()
     {
-        $mapel = Mapel::paginate(10);
+        $query = Mapel::query();
+        if (request()->has('search') && request()->search != '') {
+            $search = request()->search;
+            $query->where('kode_mapel', 'like', "%{$search}%")
+                ->orWhere('nama_mapel', 'like', "%{$search}%");
+        }
+
+        $mapel = $query->paginate(10);
+
+        $mapel->appends(['search' => request()->search]);
         return new MapelCollection($mapel);
     }
 

@@ -12,7 +12,7 @@ class GuruSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Model\Guru::create([
+        \App\Models\Guru::create([
             'user_id' => 2,
             'nip' => '1234567890',
             'nama' => 'Budi Santoso',

@@ -13,7 +13,16 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $guru = Guru::with('user')->paginate(10);
+        $query = Guru::query();
+        if (request()->has('search') && request()->search != '') {
+            $search = request()->search;
+            $query->where('nip', 'like', "%{$search}%")
+                ->orWhere('nama', 'like', "%{$search}%");
+        }
+
+        $guru = $query->with('user')->paginate(10);
+        $guru->appends(['search' => request()->search]);
+
         return new GuruCollection($guru);
     }
 
@@ -28,15 +37,22 @@ class GuruController extends Controller
         return new GuruResource($guru->load('user'));
     }
 
-    public function update(GuruUpdateRequest $request, Guru $guru) 
+    public function update(GuruUpdateRequest $request, Guru $guru)
     {
-        $guru->update($request->validated());
-        return (new GuruResource($guru->load('user')))->additional([
-            'meta' => [
-                'message' => 'Data guru berhasil diperbarui!',
-                'status' => 'success'
-            ]
-        ])->response()->setStatusCode(200);
+        try {
+            $guru->update($request->validated());
+            return (new GuruResource($guru->load('user')))->additional([
+                'meta' => [
+                    'message' => 'Data guru berhasil diperbarui!',
+                    'status' => 'success'
+                ]
+            ])->response()->setStatusCode(200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Gagal memperbarui data guru',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function destroy(Guru $guru)

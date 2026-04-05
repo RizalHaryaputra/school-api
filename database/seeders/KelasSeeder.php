@@ -12,17 +12,17 @@ class KelasSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Model\Kelas::create([
+        \App\Models\Kelas::create([
             'kode_kelas' => 'XII-RPL-1',
             'nama_kelas' => 'XII RPL 1'
         ]);
 
-        \App\Models\Model\Kelas::create([
+        \App\Models\Kelas::create([
             'kode_kelas' => 'XII-RPL-2',
             'nama_kelas' => 'XII RPL 2'
         ]);
 
-        \App\Models\Model\Kelas::create([
+        \App\Models\Kelas::create([
             'kode_kelas' => 'XII-RPL-3',
             'nama_kelas' => 'XII RPL 3'
         ]);

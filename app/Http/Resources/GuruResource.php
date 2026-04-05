@@ -20,6 +20,11 @@ class GuruResource extends JsonResource
             'nama'         => $this->nama,
             'email'        => $this->email,
             'gender'       => $this->gender,
+            'tempat_lahir' => $this->tempat_lahir,
+            'tgl_lahir'    => $this->tgl_lahir,
+            'phone_number' => $this->phone_number,
+            'alamat'       => $this->alamat,
+            'pendidikan'   => $this->pendidikan,
             'info_akun'    => [
                 'user_id'  => $this->user_id,
                 'username' => $this->user->username,
